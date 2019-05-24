@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Sistema de Control y Gestión de Obras de Construcción
 
 Things you may want to cover:
 
-* Ruby version
+* Migrado a Rails 5.2.3
 
-* System dependencies
+* Base de Datos PostGreSQL
 
-* Configuration
+* Dev Environment
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

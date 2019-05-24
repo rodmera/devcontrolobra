@@ -50,7 +50,7 @@ gem 'will_paginate', '3.1.5'
 gem 'axlsx_rails'
 gem 'github-pages'
 gem 'i18n'
-gem 'bootstrap-sass', '~> 3.3.6'
+gem "bootstrap-sass", ">= 3.4.1"
 gem 'autoprefixer-rails'
 gem "devise"
 gem 'wicked_pdf'

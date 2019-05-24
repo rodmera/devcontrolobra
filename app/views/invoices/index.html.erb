@@ -1,0 +1,75 @@
+<div class="container">
+<h4>Gastos Ingresados</h4>
+<table class="table table-stripped table-hover table-condensed table-bordered">
+  <thead>
+    <tr>
+      <th>Tipo Doc</th>
+      <th>Nº Doc.</th>
+      <th>Estado Doc.</th>
+      <th>Proveedor</th>
+      <th>C.Costo</th>
+      <th>Partida</th>
+      <th>Fecha Creación</th>
+      <th>Estado Pago</th>
+      <th>Ultima Actualización</th>
+      <th>Valor Neto</th>
+      <th>Valor IVA</th>
+      <th>Valor Total</th>
+      <th colspan="2">Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @invoices.each do |invoice| %>
+      <tr>
+        <td><%= invoice.tipo_doc %></td>
+        <td><%= invoice.id_invoice %></td>
+        <td><%= invoice.estado_documento %></td>
+        <td><%= invoice.id_supplier %></td>
+        <td><%= invoice.id_ccosto %></td>
+        <td><%= Item.where(:id => invoice.id_item).pluck(:nombre).first %></td>
+        <td><%= invoice.created_at.strftime("%d/%m/%Y") %></td>
+        <td><%= invoice.estado_pago %></td>
+        <td><%= distance_of_time_in_words_to_now(invoice.updated_at) %></td>
+        <td>
+          <%= number_to_currency(invoice.valor_neto, :locale => 'en_us', :precision => 0, :delimiter => ".", :separator => ",") %>
+        </td>
+        <td>
+          <%= number_to_currency(invoice.valor_iva, :locale => 'en_us', :precision => 0, :delimiter => ".", :separator => ",") %>
+        </td>
+        <td>
+          <%= number_to_currency(invoice.valor_total, :locale => 'en_us', :precision => 0, :delimiter => ".", :separator => ",") %>
+        </td>
+        <td><%= link_to 'Ver', invoice %></td>
+        <td><%= link_to 'Editar', edit_invoice_path(invoice), remote:true %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p>
+<%= link_to 'Ingresar Gasto', new_invoice_path, remote: true, :class => 'btn btn-primary btn-sm' %>
+<br>
+<p>
+<%= link_to 'Exportar a Excel', invoices_path(format: :xlsx), :class => 'btn btn-info btn-xs' %>
+</p>
+<div id="invoice-form" style="display:none;"></div>
+<div class="panel panel-default">
+  <div class="panel-body">
+<div class="col-xs-12">
+<div class="col-xs-4">
+<h6><strong>Facturas/Proveedor</strong></h6>
+<%= pie_chart @invoices_count, id: "invoices-chart1", donut: true, width: "350px", height: "200px" %>
+</div>
+<div class="col-xs-4">
+<h6><strong>Facturas/Día</strong></h6>
+<%= line_chart Invoice.group_by_day(:created_at).count, discrete: true, id: "invoices_por_day", width: "350px", height: "200px"  %>
+</div>
+<div class="col-xs-4">
+<h6><strong>Gastos Netos/Día</strong></h6>
+<%= line_chart Invoice.group_by_day(:created_at).sum(:valor_neto), discrete: true, id: "neto_por_day", width: "350px", height: "200px"  %>
+</div>
+</div>
+  </div>
+</div>
+</br>
+</p>
+</div>

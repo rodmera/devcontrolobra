@@ -1,0 +1,14 @@
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+		      <%= link_to 'Cancelar', orders_path, class: "btn btn-primary btn-sm", :data => {:confirm => "Está seguro que desea Cancelar?"} %>
+		    </div>
+
+		    <div class="panel-body">
+		    	<%= render 'form' %>
+		    </div>
+		</div>
+	</div>
+</div>

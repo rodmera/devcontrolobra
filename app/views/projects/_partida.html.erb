@@ -1,0 +1,27 @@
+<div class="container">
+<h5><%= @project.name %></h5>
+<table class="table table-stripped table-hover table-condensed table-bordered">
+  <thead>
+  <tr>
+    <th>Partida</th>
+    <th>Nombre</th>
+    <th>Unidad</th>
+    <th>Cantidad</th>
+    <th>Valor Unitario</th>
+    <th>Valor Total</th>
+  </tr>
+</thead>
+<tbody>
+  <% @partidas.each do |partida| %>
+    <tr>
+      <td><%= partida.id_item%></td>
+      <td><%= partida.nombre%></td>
+      <td><%= partida.id_metric %></td>
+      <td><%= partida.cant %></td>
+      <td><%= number_to_currency(partida.valor_unitario, :locale => 'en_us', :precision => 0, :delimiter => ".") %></td>
+      <td><%= number_to_currency(partida.valor_total, :locale => 'en_us', :precision => 0, :delimiter => ".") %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+</div>

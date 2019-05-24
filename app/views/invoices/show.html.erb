@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+<div class=container>
+<div class="panel panel-default">
+<div class="panel-heading">
+</div>
+<div class="panel-body">
+<div class="form-horizontal">
+<p>
+  <label>Num. de Documento:</label>
+  <%= @invoice.id_invoice %>
+</p>
+<p>
+  <label>ID Orden de Compra:</label>
+  <%= @invoice.id_purchase %>
+</p>
+<p>
+  <label>ID Partida:</label>
+  <%= @invoice.id_item %>
+</p>
+<p>
+  <label>Alias Proveedor:</label>
+  <%= @invoice.id_supplier %>
+</p>
+<p>
+  <label>ID Centro Costo:</label>
+  <%= @invoice.id_ccosto %>
+</p>
+<p>
+  <label>Fecha Creación:</label>
+  <%= @invoice.created_at.strftime("%d/%m/%Y") %>
+</p>
+<p>
+  <label>Estado Doc:</label>
+  <%= @invoice.estado_documento %>
+</p>
+<p>
+  <label>Descripcion:</label>
+  <%= @invoice.descripcion %>
+</p>
+<p>
+  <label>Valor neto:</label>
+  <%= number_to_currency(@invoice.valor_neto , :locale => 'en_us', :precision => 0, :delimiter => "." ) %>
+</p>
+<p>
+  <label>Valor iva:</label>
+  <%= number_to_currency(@invoice.valor_iva , :locale => 'en_us', :precision => 0, :delimiter => "." ) %>
+</p>
+<p>
+  <label>Valor total:</label>
+  <%= number_to_currency(@invoice.valor_total , :locale => 'en_us', :precision => 0, :delimiter => "." ) %>
+</p>
+
+<%= link_to 'Volver', invoices_path, :class => 'btn btn-primary btn-sm'  %>
+</div>
+</div>
+</div>
+</div>

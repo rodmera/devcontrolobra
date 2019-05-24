@@ -1,0 +1,7 @@
+<div class="container">
+<h4>Nueva OC</h4>
+
+<%= render 'form', purchase: @purchase %>
+<p>
+<%= link_to 'Volver', purchases_path, :class => 'btn btn-primary btn-sm' %>
+</p>

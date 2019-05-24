@@ -1,0 +1,150 @@
+<div class="col-xs-12">
+<%= simple_form_for(@purchase) do |f| %>
+  <div id="purchase-wrap">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3 class="page-header">ORDEN DE COMPRA<small class="pull-right">Fecha: <span class="purchase_header_date"></span></small></h3>
+      </div><!-- /.col -->
+    </div>
+
+    <div class="row purchase-info">
+      <div class="col-xs-4 purchase-col">
+        De
+        <address>
+          <%= f.text_field :company, value: "REME INGENIERIA Y CONSTRUCCION SPA", class: "form-control", id: "1" %>
+          <input class="form-control" id= "2" value="76.532.798-9" placeholder="RUT XXXXXXXX-X" />
+          <input class="form-control" id= "3" value="Calle Limache 3405 Edif. Reitz Of.56" />
+          <input class="form-control" id= "4"  value="" placeholder="Teléfono" />
+          <input class="form-control" id= "11" value="Viña del Mar" />
+          <input class="form-control" id= "666" value="Viña del Mar" />
+        </address>
+      </div><!-- /.col -->
+      <div class="col-xs-4 purchase-col">
+        Para
+        <address>
+          <%= f.text_field :contragent, class: "form-control", id: "5" %>
+          <input class="form-control" id= "6"  placeholder="RUT XXXXXXXX-X" />
+          <input class="form-control" id= "7"  placeholder="Dirección" />
+          <input class="form-control" id= "8"  placeholder="Teléfono" />
+          <input class="form-control" id= "777"  placeholder="Comuna" />
+          <input class="form-control" id= "888"  placeholder="Ciudad" />
+        </address>
+      </div><!-- /.col -->
+      <div class="col-xs-4 purchase-col">
+        <form class="form-horizontal">
+
+          <div class="form-group">
+            <div class="col-xs-4"><label>Num #</label></div>
+            <div class="col-xs-8 invoice_num"><span id="purchase_number"><%= (Purchase.last.present? ? (Purchase.last.id + 1) : 1) %></span></div>
+          </div>
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label :date, "Fecha", required: false %></div>
+            <div class="col-xs-8"><%= f.input_field :date, class: "form-control datepicker", as: :string, id: "purchase_date" %></div>
+          </div>
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label :currency, "Moneda", required: false %></div>
+            <div class="col-xs-8"><%= f.text_field :currency, value: "", id:"purchase_currency", class: "form-control" %></div>
+          </div>
+
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-5 purchase_space"><label>Monto</label></div>
+            <div class="col-xs-7 purchase_space bold" style="text-align:right; padding-top:7px"><span class="due">0.00</span><span class="subtotal_currency"></span></div>
+          </div>
+        </form>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+
+    <div class="row">
+      <div class="col-xs-12 table-responsive">
+        <hr>
+        <table class="table table-hover" id="items">
+          <thead>
+              <th class="item-name">Item</th>
+              <th class="description">Descripcion</th>
+              <th class="unit">Valor Unitario</th>
+              <th class="quantity">Cantidad</th>
+              <th class="units">Total Neto</th>
+              <th class="no_print">Acciones</th>
+          </thead>
+          <tbody>
+            <tr class="item-row">
+              <td><input class="form-control item_name" value="Item #1" /></td>
+              <td><input class="form-control item_desc" value="Descripcion" /></td>
+              <td><input class="form-control cost" value="0.00" /></td>
+              <td><input class="form-control qty" value="0" /></td>
+              <td class="price_td"><span class="price">0.00</span><span class="subtotal_currency"></span></td>
+              <td class="delete_td"><a class="delete" href="javascript:;" title="Remove row"><span class="ti-close"></span></a></td>
+            </tr>
+          
+            <tr class="item-row">
+              <td><input class="form-control item_name" value="Item #2" /></td>
+
+              <td><input class="form-control item_desc" value="Descripcion #2" /></td>
+              <td><input class="form-control cost" value="0.00" /></td>
+              <td><input class="form-control qty" value="0" /></td>
+              <td class="price_td"><span class="price">0.00</span><span class="subtotal_currency"></span></td>
+              <td class="delete_td"><a class="delete" href="javascript:;" title="Remove row"><span class="ti-close"></span></a></td>
+            </tr>
+          
+            <tr id="hiderow">
+              <td colspan="6"><a id="addrow" class="btn btn-success btn-sm" href="javascript:;" title="Add a row"><span class="ti-plus"></span>  Agregar Item</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-6">
+        <div class="table-responsive">
+          <table class="table table-hover" id="totals">
+            <tr>
+              <th style="width:50%">Subtotal:</th>
+              <td><span id="subtotal">0.00</span><span class="subtotal_currency"></span></td>
+            </tr>
+            <tr>
+              <th>IVA:</th>
+              <td><input id="9" class="form-control" value="0.00"  /></td>
+            </tr>
+            <tr>
+              <th>Total:</th>
+              <td class="balance"><span class="due" id="purchase_total"></span><span class="subtotal_currency"></span></td>
+              <%= f.hidden_field :amount, id: "purchase_total1" %>
+            </tr>
+          </table>
+        </div>
+      </div><!-- /.col -->    
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 pull-left">
+        <a class="btn btn-info btn-sm" id="purchase_button" data-toggle="modal" data-target="#purchase_modal">Mostrar OC</a>
+        <%= f.submit 'Guardar OC', class: 'btn btn-warning btn-sm', id: "submit_purchase" %>    
+      </div>
+    </div>
+
+    <div id="terms">
+      <h5>OBSERVACIONES</h5>
+      <%= f.text_area :despacho, id: "10" %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<div class="modal fade" id="purchase_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="width:920px">
+      <div class="container-fluid purchase_wrapper" style="margin:10px" id="print-me">
+        <%= render 'purchase' %>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" onclick="printDiv('print-me')">Imprimir</button>
+      </div>
+    </div>
+  </div>
+</div>

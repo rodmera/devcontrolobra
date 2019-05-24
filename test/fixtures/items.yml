@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_item: MyString
+  cant: 1
+  descripcion: MyString
+  valor_unitario: 9.99
+  valor_total: 9.99
+  ccosto: MyString
+  id_oc_as: MyString
+  id_soc_as: MyString
+
+two:
+  id_item: MyString
+  cant: 1
+  descripcion: MyString
+  valor_unitario: 9.99
+  valor_total: 9.99
+  ccosto: MyString
+  id_oc_as: MyString
+  id_soc_as: MyString

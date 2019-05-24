@@ -1,0 +1,79 @@
+<script>
+
+  function format ( name, value ) {
+    return '<div>' + name + ': '+ value + '</div>';
+}
+  $(document).ready(function () {
+      var table = $('#datatable_items').DataTable({});
+
+      // Add event listener for opening and closing details
+      $('#datatable_items').on('click', 'td.details-control', function () {
+          var tr = $(this).closest('tr');
+          var row = table.row(tr);
+
+          if (row.child.isShown()) {
+              // This row is already open - close it
+              row.child.hide();
+              tr.removeClass('shown');
+          } else {
+              // Open this row
+              row.child(format(tr.data('child-value'))).show();
+              tr.addClass('shown');
+          }
+      });
+  });
+
+</script>
+
+
+<div class="container-fluid">
+<table class="table table-bordered table-hover table-striped table-condensed" id="datatable_items">
+  <thead>
+    <tr>
+      <th>
+        ID
+      </th>
+      <th>
+        Medida
+      </th>
+      <th>
+        Descripcion
+      </th>
+      <th>Valor Unitario</th>
+      <th> Acción 1 </th>
+      <th> Acción 2 </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr data-item-id=<%= "#{item.id}" %> class="item">
+        <td>
+          <%= item.id %>
+        </td>
+        <td>
+          <%= item.metric %>
+        </td>
+        <td>
+          <%= item.descripcion %>
+        </td>
+        <td><%= number_to_currency(item.valor_unitario, :locale => 'en_us', :precision => 0, :delimiter => ".") %></td>
+      <td>
+        <%= button_to edit_item_path(item), {method: :get, remote: true, class: "btn btn-basic btn-xs"} do %>
+          <span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span> Editar
+        <% end %>
+      </td>
+      <td>
+      <%= button_to item_path(item), { method: :delete, remote: true, data: { confirm: '¿Está seguro?' }, class: "btn btn-basic btn-xs" } do %>
+       <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span> Borrar
+      <% end %>
+     </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'New Item', new_item_path, remote: true %>
+
+<div id="item-form" style="display:none;"></div>
+</div><!--  
+
+

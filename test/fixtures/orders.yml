@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  PSolicita: MyString
+  Num_Solicitud: MyString
+  Estado: MyString
+  Fecha_Creacion: 2017-05-31
+  Fecha_OC: 2017-05-31
+  Centro_Costo: MyString
+
+two:
+  PSolicita: MyString
+  Num_Solicitud: MyString
+  Estado: MyString
+  Fecha_Creacion: 2017-05-31
+  Fecha_OC: 2017-05-31
+  Centro_Costo: MyString

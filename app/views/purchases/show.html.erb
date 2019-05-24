@@ -1,0 +1,38 @@
+
+<div class="container">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      <h3 class="panel-title">OC</h3>
+      </div>
+
+      <div class="panel-body">
+        <p>
+          <strong>Empresa:</strong>
+          <%= @purchase.company %>
+        </p>
+
+        <p>
+          <strong>Para:</strong>
+          <%= @purchase.contragent %>
+        </p>
+
+        <p>
+          <strong>Monto:</strong>
+          <%= @purchase.amount %> <%= @purchase.currency %>
+        </p>
+
+        <p>
+          <strong>Fecha:</strong>
+          <%= @purchase.date %>
+        </p>
+      </div>
+
+      <div class="panel-footer">
+        <div class="btn-group">
+          <%= link_to 'Volver', purchases_path, class: "btn btn-primary btn-sm" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

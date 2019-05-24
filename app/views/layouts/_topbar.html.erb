@@ -1,0 +1,36 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <% if user_signed_in? %> 
+      <%= link_to image_tag("reme.jpg", alt: "logo"), '/', class: 'navbar-brand' %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav ">
+        <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Solicitudes de Compra", root_path %></li>
+        <li class="<%= 'active' if current_page?(invoices_path) %>"><%= link_to "Facturas/Gastos", invoices_path %></li>
+        <li class="<%= 'active' if current_page?(projects_path) %>"><%= link_to "Proyectos", projects_path %></li>
+        <li class="<%= 'active' if current_page?(suppliers_path) %>"><%= link_to "Proveedores", suppliers_path %></li>
+        </ul>
+      <ul class="nav navbar-default navbar-right">  
+        
+        <li>
+          <%= button_to destroy_user_session_path, {method: :delete, class: "btn btn-default"} do %>
+            <span class="glyphicon glyphicon-log-out" aria-hidden="true"> </span> Salir
+          <% end %>
+        </li>
+        <!--<li class=""><a href="<%= root_path %>">Solicitudes de Compra <span class="sr-only">(current)</span></a></li> -->
+        <!--<li><%= link_to 'Contenido OC', controller: "/items"%></li> -->
+      </ul>
+    </div><!-- /.navbar-collapse -->
+<% end %>
+  </div><!-- /.container-fluid -->
+</nav>

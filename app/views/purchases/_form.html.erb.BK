@@ -1,0 +1,98 @@
+<div class="container-fluid">
+<div class="panel-body">
+<%= form_for(purchase) do |f| %>
+  
+
+<div class="form-horizontal">
+
+          <div class="form-group form-group-sm">
+            <%= f.label :"ID OC", class:'control-label col-xs-2 ' %>
+              <div class="col-xs-6">
+                <%= f.text_field :id, class:'form-control input-xs', placeholder:'ID' %>
+              </div>
+          </div>
+
+          <div class="form-group form-group-sm">
+            <%= f.label :"Centro de Costo", class:'control-label col-xs-2 ' %>
+              <div class="col-xs-6">
+                <%= f.text_field :ccosto, class:'form-control input-xs', placeholder:'Centro de Costo' %>
+              </div>
+          </div>
+
+          <div class="form-group form-group-sm">
+            <%= f.label :"Razón Social", class:'control-label col-xs-2 ' %>
+              <div class="col-xs-6">
+                <%= f.text_field :razon_social, class:'form-control input-xs', placeholder:'Razón Social' %>
+              </div>
+          </div>
+
+          <div class="form-group form-group-sm">
+            <%= f.label :"Fecha Emisión", class:'control-label col-xs-2 ' %>
+              <div class="col-xs-6">
+                <%= f.date_field :fecha, class:'form-control input-xs', placeholder:'Fecha Emisión' %>
+              </div>
+          </div>
+
+          <div class="form-group form-group-sm">
+            <%= f.label :"RUT", class:'control-label col-xs-2 ' %>
+              <div class="col-xs-6">
+                <%= f.text_field :rut, class:'form-control input-xs', placeholder:'RUT' %>
+              </div>
+          </div>
+
+          <div class="form-group form-group-sm">
+            <%= f.label :"Dirección", class:'control-label col-xs-2 ' %>
+              <div class="col-xs-6">
+                <%= f.text_field :direccion, class:'form-control input-xs', placeholder:'Dir.' %>
+              </div>
+          </div>
+
+          <div class="form-group form-group-sm">
+            <%= f.label :"Comuna", class:'control-label col-xs-2 ' %>
+              <div class="col-xs-6">
+                <%= f.text_field :comuna, class:'form-control input-xs', placeholder:'Comuna' %>
+              </div>
+          </div>
+
+          <div class="form-group form-group-sm">
+            <%= f.label :"Ciudad", class:'control-label col-xs-2 ' %>
+              <div class="col-xs-6">
+                <%= f.text_field :ciudad, class:'form-control input-xs', placeholder:'Ciudad' %>
+              </div>
+          </div>
+
+          <div class="form-group form-group-sm">
+            <%= f.label :"EMail", class:'control-label col-xs-2 ' %>
+              <div class="col-xs-6">
+                <%= f.text_field :email, class:'form-control input-xs', placeholder:'Email' %>
+              </div>
+          </div>
+
+          <div class="form-group form-group-sm">
+            <%= f.label :"Fono", class:'control-label col-xs-2 ' %>
+              <div class="col-xs-6">
+                <%= f.text_field :fono, class:'form-control input-xs', placeholder:'Fono' %>
+              </div>
+          </div>
+
+          <div class="form-group form-group-sm">
+            <%= f.label :"Fecha entrega", class:'control-label col-xs-2 ' %>
+              <div class="col-xs-6">
+                <%= f.date_field :fecha_entrega, class:'form-control input-xs', placeholder:'Fecha' %>
+              </div>
+          </div>
+
+          <div class="form-group form-group-sm">
+            <%= f.label :"Condiciones de Pago", class:'control-label col-xs-2 ' %>
+              <div class="col-xs-6">
+                <%= f.select :cond_pago, [['Efectivo'], ['30 Días'], ['60 Días']] , class:'form-control ' %>
+              </div>
+          </div>
+
+  <div class="actions">
+    <%= f.submit "Guardar", class: "btn btn-primary btn-sm"%>
+  </div>
+<% end %>
+</div>
+</div>
+</div>

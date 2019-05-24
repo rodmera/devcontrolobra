@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @metric.number %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @metric.name %>
+</p>
+
+<p>
+  <strong>Unit:</strong>
+  <%= @metric.unit %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @metric.date %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @metric.state %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @metric.user_id %>
+</p>
+
+<p>
+  <strong>Product type:</strong>
+  <%= @metric.product_type %>
+</p>
+
+<%= link_to 'Edit', edit_metric_path(@metric) %> |
+<%= link_to 'Back', metrics_path %>

@@ -1,0 +1,257 @@
+
+<div class="col-xs-12">
+<%= form_for(@order) do |f| %>
+
+    <% if @order.errors.any? %>
+      <div id="error_explanation">
+         <h4>No es posible guardar OC con Monto = 0</h4>
+         <ul>
+           <% @order.errors.full_messages do |msg| %>
+           <% #Should have been: @location.errors.full_messages.each do |msg| %>
+           <li>
+             <%= msg %>
+           </li>
+           <% end %>
+         </ul>
+      </div>
+    <% end %>
+
+
+  <div id="purchase-wrap">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3 class="page-header">ORDEN DE COMPRA Nº<span id="purchase_number"><%= (Order.last.present? ? (Order.last.id + 1) : 1) %></span><small class="pull-right">Fecha: <span class="purchase_header_date"></span></small></h3>
+      </div><!-- /.col -->
+      <div class="col-xs-4">
+        <small>
+          <label>REME INGENIERIA Y CONSTRUCCION SPA</label><br />
+          <label>76.532.798-9</label><br />
+          <label>Calle Limache 3405 Edif. Reitz Of.56</label><br />
+          <label>Teléfono</label><br />
+          <label>Viña del Mar</label>
+        </small>
+      </div><!-- /.col -->
+    </div>
+<hr>
+
+    <div class="row purchase-info">
+      <div class="col-xs-6 ">
+        <!--<address></address> -->
+        <form class="form-horizontal">
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label "Alias", class:"control-label" %></div>
+            <div class="col-xs-8"><%= f.select(:supplier_id, options_for_select(Supplier.all.map { |supplier| [supplier.alias, supplier.id] }), {:selected => @order.supplier_alias, :include_blank => "-Seleccione Alias-"}, {:id => "5", :required => true, class:'form-control input-sm'}) %></div>
+          </div>
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label "Razon Social", required: false %></div>
+            <div class="col-xs-8"><%= f.text_field :supplier_razonsocial, class: "form-control input-sm", id: "66", :placeholder =>'Razón Social' %>
+            </div>
+          </div>          
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label "RUT", required: false %></div>
+            <div class="col-xs-8"><%= f.text_field :supplier_rut, class: "form-control input-sm", id: "6", :placeholder =>'RUT XXXXXXXX-X' %>
+            </div>
+          </div>            
+          
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label "Dirección", required: false %></div>
+            <div class="col-xs-8"><%= f.text_field :supplier_dir, class: "form-control input-sm", id: "7", :placeholder =>'Direccion' %>
+            </div>
+          </div>         
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label "Fono", required: false %></div>
+            <div class="col-xs-8"><%= f.text_field :supplier_fono, class: "form-control input-sm", id: "8", :placeholder =>'Fono' %>
+            </div>
+          </div>              
+          
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label "Comuna", required: false %></div>
+            <div class="col-xs-8"><%= f.text_field :comuna, class: "form-control input-sm", id: "4", :placeholder =>'Comuna' %></div>
+          </div>           
+          
+          
+        
+      </div><!-- /.col -->
+      <div class="col-xs-6 ">
+        
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label :date, "Fecha", required: false %></div>
+            <div class="col-xs-8"><%= f.text_field :Fecha_Creacion, class: "form-control input-sm datepicker", :id => 'purchase_date' %></div>
+          </div>
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label :PSolicita, "Solicitado por", required: false %></div>
+            <div class="col-xs-8"><%= f.select(:PSolicita, [['Usuario Pruebas'], ['Administrador'], ['Desarrollador']], {:selected => @order.PSolicita, :include_blank => "-Seleccione Solicitante-"}, {:id => "purchase_solicitante", :required => true, class:'form-control input-sm'}) %>
+            </div>
+
+          </div>       
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label :Centro_Costo, "Centro de Costo", required: false %></div>
+            <div class="col-xs-8 "><%= f.select(:Centro_Costo, options_for_select(Project.all.map { |project| [project.ccosto, project.ccosto] }), {:selected => @order.Centro_Costo, :include_blank => "-Seleccione CentroCosto-"}, {:id => "purchase_CentroCosto", :required => true, class:'form-control input-sm'}) %></div>
+          </div>
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label :item_id, "Partida", required: false %></div>
+            <div class="col-xs-8 "><%= f.select(:item_id, options_for_select(Item.all.collect { |item| [item.nombre, item.id] }), {:include_blank => "-Seleccione Partida-"}, {:id => "purchase_partida", :required => true, class:'form-control input-sm'}) %></div>
+          </div>                
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label :currency, "Moneda", required: false %></div>
+            <div class="col-xs-8 "><%= f.text_field :currency, value: "", id:"purchase_currency", class: "form-control input-sm" %></div>
+          </div>
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label :impuesto1, "Impuesto %", required: false %></div>
+            <div class="col-xs-8 "><%= f.number_field :impuesto1, :value => "19", id:"purchase_impuesto1", class: "form-control input-sm", placeholder: "% Impuesto", :required => true  %></div>
+          </div>          
+
+        </form>
+      </div></small><!-- /.col -->
+    </div><!-- /.row -->
+
+    <div class="row">
+      <div class="col-xs-12 table-responsive">
+        <hr>
+        <table class="table table-hover" id="items">
+      
+          <thead>
+              <th class="item-name">Item</th>
+              <th class="description">Descripcion</th>
+              <th class="quantity">Cantidad</th>
+              <th class="unit">Valor Unitario</th>
+              <th class="unit">Descuento</th>
+              <th class="units">Total Neto</th>
+              <th class="no_print">Acciones</th>
+          </thead>
+      
+          <tbody>
+            <tr class="item-row">
+              <td>
+              <%= f.text_field :item_name1, class: "form-control item_name", id: "201", :placeholder =>'Item 1' %>
+              </td>
+              <td><%= f.text_field :item_desc1, class: "form-control item_desc", id: "203", :placeholder =>'Descrip.' %>
+              <!-- <input class="form-control item_desc" value="Descripcion" maxlength="50"/> -->
+              </td>
+              <td><%= f.text_field :qty1, class: "form-control qty", id: "204", :placeholder =>'' %>
+              <!--<input class="form-control qty" value="0" /> -->
+              </td>
+              <td><%= f.text_field :cost1, class: "form-control cost", id: "205", :placeholder =>'' %>
+              <!-- <input class="form-control cost" value="0" /> -->
+              </td>
+              <td><%= f.text_field :dscto1, class: "form-control dscto", id: "206", :placeholder =>'' %>
+              <!-- <input class="form-control dscto" value="0" /> -->
+              </td>
+              <td class="price_td">
+              <span class="price" id="price1"><%= f.text_field :price1, class: "form-control price1", id: "207", :placeholder =>'' %></span>
+              <span class="subtotal_currency"></span></td>
+              <td class="delete_td"><a class="delete" href="javascript:;" title="Remove row"><span class="ti-close"></span></a></td>
+            </tr>
+          
+            <tr class="item-row">
+              <td>
+              <%= f.text_field :item_name2, class: "form-control item_name", id: "202", :placeholder =>'Item 2' %>
+              </td>
+
+              <td><input class="form-control item_desc" value="Descripcion #2" maxlength="50" /></td>
+              <td><input class="form-control qty" value="0" /></td>
+              <td><input class="form-control cost" value="0" /></td>
+              <td><input class="form-control dscto" value="0" /></td>
+              <td class="price_td"><span class="price">0</span><span class="subtotal_currency"></span></td>
+              <td class="delete_td"><a class="delete" href="javascript:;" title="Remove row"><span class="ti-close"></span></a></td>
+            </tr>
+          
+            <tr id="hiderow">
+              <td colspan="6"><a id="addrow" class="btn btn-success btn-sm" href="javascript:;" title="Add a row"><span class="ti-plus"></span>  Agregar Item</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-6">
+        <div class="table-responsive">
+          <table class="table table-hover" id="totals">
+            <tr>
+              <th style="width:50%">Subtotal:</th>
+              <td><span id="subtotal">0</span><span class="subtotal_currency"></span></td>
+            </tr>
+            <button type="button", onclick="calculo2();">Calcular Impuesto</button>
+            <tr>
+              <th>Impuesto:</th>
+              <td><%= f.text_field :monto_impuesto, class: "form-control monto_impuesto", id: "9" %>
+              <!--<input id="9" class="form-control" value="0"  /> --></td>
+            </tr>
+            <tr>
+              <th>Total:</th>
+              <td class="balance"><span class="due" id="purchase_total">0</span><span class="subtotal_currency"></span></td>
+              <%= f.hidden_field :amount, id: "purchase_total1" %>
+              <%= f.hidden_field :subtotal1, id: "subtotal1" %>
+              <input id="100" type="hidden" />
+              <input id="101" type="hidden" />
+              <input id="102" type="hidden" />
+              <input id="103" type="hidden" />
+              <%= f.hidden_field :Centro_Costo, id: "110" %>
+              <%= f.hidden_field :estado, :value => 'PENDIENTE' %>
+              <%= f.hidden_field :item_name1, id: "item_name1" %>
+              <%= f.hidden_field :item_name2, id: "item_name2" %>
+              <%= f.hidden_field :item_desc1, id: "item_desc1" %>
+              <%= f.hidden_field :qty1, id: "qty1" %>
+              <%= f.hidden_field :cost1, id: "cost1" %>
+              <%= f.hidden_field :dscto1, id: "dscto1" %>
+              <%= f.hidden_field :price1, id: "price_1" %>
+              <%= f.hidden_field :monto_impuesto, id: "monto_impuesto" %>
+            </tr>
+          </table>
+        </div>
+      </div><!-- /.col -->    
+    </div><!-- /.row -->
+
+    <div class="row">
+      <div class="col-xs-12 pull-left">
+        <a class="btn btn-info btn-sm" id="purchase_button" data-toggle="modal" data-target="#purchase_modal">Mostrar OC</a>
+        <%= f.submit 'Guardar OC', class: 'btn btn-warning btn-sm', id: "submit_purchase" %>    
+      </div>
+    </div>
+
+<!--<div id="divResults"></div>
+<div id="divErrorMessages"></div>
+-->
+    <div id="terms">
+      <h5>OBSERVACIONES</h5>
+      <%= f.text_area :despacho, id: "10", :maxlength => 135 %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<div class="modal fade" id="purchase_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="width:920px">
+      <div class="container-fluid purchase_wrapper" style="margin:10px" id="print-me">
+        <%= render 'purchase' %>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary btn-sm" onclick="printDiv('print-me')">Imprimir</button>
+      </div>
+    </div>
+  </div>
+</div>

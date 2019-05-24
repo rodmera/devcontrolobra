@@ -1,0 +1,59 @@
+<div class="container">
+
+<p>
+  <strong>ID:</strong>
+  <%= @purchase.id %>
+</p>
+
+<p>
+  <strong>Razon social:</strong>
+  <%= @purchase.razon_social %>
+</p>
+
+<p>
+  <strong>Fecha Emisión:</strong>
+  <%= @purchase.fecha %>
+</p>
+
+<p>
+  <strong>RUT:</strong>
+  <%= @purchase.rut %>
+</p>
+
+<p>
+  <strong>Dirección:</strong>
+  <%= @purchase.direccion %>
+</p>
+
+<p>
+  <strong>Comuna:</strong>
+  <%= @purchase.comuna %>
+</p>
+
+<p>
+  <strong>Ciudad:</strong>
+  <%= @purchase.ciudad %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @purchase.email %>
+</p>
+
+<p>
+  <strong>Fono:</strong>
+  <%= @purchase.fono %>
+</p>
+
+<p>
+  <strong>Fecha Entrega:</strong>
+  <%= @purchase.fecha_entrega %>
+</p>
+
+<p>
+  <strong>Condiciones de Pago:</strong>
+  <%= @purchase.cond_pago %>
+</p>
+
+<%= link_to 'Editar', edit_purchase_path(@purchase), :class => 'btn btn-primary btn-sm' %> |
+<%= link_to 'Volver', purchases_path, :class => 'btn btn-primary btn-sm' %>

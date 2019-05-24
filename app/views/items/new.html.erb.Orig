@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<body>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h5>Nuevo Item</h5>
+            </div>
+
+            <div class="panel-body">
+                <%= form_for @item, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <%= f.label :id_item, 'ID Item', class:'control-label col-xs-2 ' %>
+                            <div class="col-xs-6">
+                                <%= f.text_field :id_item, class:'form-control', placeholder:'ID item' %>
+                            </div>
+                    </div>
+
+                    <div class="form-group">
+                        <%= f.label :metric, 'Unidad', class:'control-label col-xs-2 ' %>
+                            <div class="col-xs-6">
+                                <%= f.collection_select :metric, Metric.all, :unit, :unit, :selected => @item.metric  %>
+                            </div>
+                    </div>
+
+                    <div class="form-group">
+                        <%= f.label :cant, 'Cantidad', class:'control-label col-xs-2 ' %>
+                            <div class="col-xs-6">
+                                <%= f.text_field :cant, class:'form-control', placeholder:'Cantidad' %>
+                            </div>
+                    </div>
+
+                    <div class="form-group">
+                        <%= f.label :descripcion, 'Descripcion', class:'control-label col-xs-2 ' %>
+                            <div class="col-xs-6">
+                                <%= f.text_field :descripcion, class:'form-control', placeholder:'Descripcion' %>
+                            </div>
+                    </div>
+
+                    <div class="form-group">
+                        <%= f.label :valor_unitario, 'Valor Unitario', class:'control-label col-xs-2 ' %>
+                            <div class="col-xs-6">
+                                <%= f.number_field :valor_unitario, class:'form-control', placeholder:'Valor Unitario' %>
+                            </div>
+                    </div>  
+
+                    <div class="form-group">
+                        <label for="inputPassword" class="col-xs-2 control-label">Valor Total</label>
+                            <div class="col-xs-6">
+                                <input class="form-control" id="disabledInput" type="text" placeholder="Se Auto-calcula" disabled>
+                            </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-2 left">
+                        </div>
+                    </div>
+
+                    <br />
+                        <%= f.submit 'Guardar Itemizado', {:class=>"btn btn-primary"}  %>
+                        <%= link_to 'Cancelar', :back, {:class=>"btn btn-primary"}  %>
+                <% end %>
+                </div>
+            </div>
+        </div>
+ 
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h6>...</h6>
+            </div>
+                <div class="panel-body">
+                </div>
+        </div>
+    </div>
+</body>

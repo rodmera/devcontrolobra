@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  razon_social: MyString
+  rut: MyString
+  giro: MyString
+  estado: MyString
+  observaciones: MyString
+  fecha_inicio: 2017-05-30
+  direccion_l1: MyString
+  direccion_l2: MyString
+  cod_postal: MyString
+  comuna: MyString
+  ciudad: MyString
+  region: MyString
+  pais: MyString
+  telefono: MyString
+  sitio_web: MyString
+  credito: MyString
+  plazo_pago: MyString
+
+two:
+  name: MyString
+  razon_social: MyString
+  rut: MyString
+  giro: MyString
+  estado: MyString
+  observaciones: MyString
+  fecha_inicio: 2017-05-30
+  direccion_l1: MyString
+  direccion_l2: MyString
+  cod_postal: MyString
+  comuna: MyString
+  ciudad: MyString
+  region: MyString
+  pais: MyString
+  telefono: MyString
+  sitio_web: MyString
+  credito: MyString
+  plazo_pago: MyString

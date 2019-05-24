@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  idinteger: MyString
+  NumOC: MyString
+  Proveedor: MyString
+  FechaEmision: 2017-03-07 02:01:46
+  ValorNeto: 1
+
+two:
+  idinteger: MyString
+  NumOC: MyString
+  Proveedor: MyString
+  FechaEmision: 2017-03-07 02:01:46
+  ValorNeto: 1

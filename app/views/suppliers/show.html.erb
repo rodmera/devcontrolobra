@@ -1,0 +1,104 @@
+<div class="container">
+<div class="panel panel-default">
+<div class="panel-heading">
+</div>
+<div class="panel-body">
+<div class="form-horizontal">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Razon social:</strong>
+  <%= @supplier.razon_social %>
+</p>
+
+<p>
+  <strong>Alias:</strong>
+  <%= @supplier.alias %>
+</p>
+
+<p>
+  <strong>Rut:</strong>
+  <%= @supplier.rut %>
+</p>
+
+<p>
+  <strong>Giro:</strong>
+  <%= @supplier.giro %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @supplier.estado %>
+</p>
+
+<p>
+  <strong>Observaciones:</strong>
+  <%= @supplier.observaciones %>
+</p>
+
+<p>
+  <strong>Fecha Creación:</strong>
+  <%= @supplier.created_at.strftime("%d/%m/%Y") %>
+</p>
+
+<p>
+  <strong>Direccion l1:</strong>
+  <%= @supplier.direccion_l1 %>
+</p>
+
+<p>
+  <strong>Comuna:</strong>
+  <%= @supplier.comuna %>
+</p>
+
+<p>
+  <strong>Region:</strong>
+  <%= @supplier.region %>
+</p>
+
+<p>
+  <strong>Pais:</strong>
+  <%= @supplier.pais %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @supplier.telefono %>
+</p>
+
+<p>
+  <strong>Sitio web:</strong>
+  <%= @supplier.sitio_web %>
+</p>
+
+<p>
+  <strong>Credito:</strong>
+  <%= @supplier.credito %>
+</p>
+
+<p>
+  <strong>Plazo pago:</strong>
+  <%= @supplier.plazo_pago %>
+</p>
+
+<p>
+  <strong>Nombre Contacto:</strong>
+  <%= @supplier.p_nombrecontacto %>
+</p>
+
+<p>
+  <strong>Fono Contacto:</strong>
+  <%= @supplier.p_fonocontacto %>
+</p>
+
+<p>
+  <strong>Mail Contacto:</strong>
+  <%= @supplier.p_mailcontacto %>
+</p>
+
+<%= link_to 'Editar', edit_supplier_path(@supplier), :class => 'btn btn-primary btn-sm' %> |
+<%= link_to 'Volver', suppliers_path, :class => 'btn btn-primary btn-sm' %>
+</div>
+</div>
+</div>
+</div>

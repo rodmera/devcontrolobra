@@ -1,0 +1,18 @@
+
+            <tr class="nested-fields item-row">
+              <td>
+              <%= f.text_field :nombre, class: "form-control item_name", id:"item_name", :placeholder =>'P1', :maxlength => 30 %>
+              </td>
+              <td><%= f.text_field :descripcion, class: "form-control item_desc", :placeholder =>'Desc', :maxlength => 60, id:"text_area_desc" %></td>
+              <td><%= f.number_field :cant, class: "form-control qty", id:"qty", in: 1..9999999, required: true  %></td>
+              <td><%= f.number_field :valor_unitario, class: "form-control cost", id:"cost", required: true %>
+              </td>
+              <td><%= f.number_field :descuento, class: "form-control dscto", id:"dscto" %>
+              </td>
+              <td><%= f.text_field :total_neto, class: "form-control price", id:"price", readonly: true %>
+
+              </td>
+              <td>
+              <%= f.check_box :_destroy, {id:"checkbox_eliminar"}, false, true %></td>
+            </tr>
+

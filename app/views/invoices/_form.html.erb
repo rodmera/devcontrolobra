@@ -1,0 +1,102 @@
+<div class="panel panel-default">
+<div class="panel-heading">
+</div>
+<div class="panel-body">
+  <%= form_for(@invoice) do |f| %>
+    <div class="form-horizontal">
+
+      <div class="form-group">
+            <%= f.label :"Tipo Documento", class:'control-label col-xs-2 ' %>
+              <div class="col-xs-5">
+                <%= f.select(:tipo_doc, [['Boleta Electrónica (BOL-EL'], ['Factura Electrónica (FAC-EL)'], ['Factura Exenta (FAC-EX)'], ['Factura Compra (FAC-CE)'], ['Factura Interna'], ['Gasto Interno'], ['RRHH'], ['Fondo por Rendir'], ['Otro']], {:include_blank => "- Seleccione TipoDoc -", :selected => @invoice.tipo_doc}, {:id => "invoice_tipodoc", :required => true, class:'form-control input-sm'} ) %>
+              </div>
+      </div>    
+
+      <div class="form-group">
+        <%= f.label :id_invoice, 'Número de Documento', class:'control-label col-xs-2 ' %>
+          <div class="col-xs-5">
+            <%= f.text_field :id_invoice, class:'form-control', placeholder:'Num Documento', :required => true %>
+          </div>
+      </div>   
+      
+      <div class="form-group">
+        <%= f.label :order_id, 'ID SOC', class:'control-label col-xs-2 ' %>
+          <div class="col-xs-5">
+            
+          <%= f.select(:order_id, options_for_select(Order.all.collect { |order| [order.id, order.id] }, :selected => @invoice.order_id), {:include_blank => "- Seleccione SOC -"}, {:id => "invoice_purchase", :required => true, class:'form-control input-sm'}) %>
+          </div>
+      </div>        
+
+      <div class="form-group">
+        <%= f.label :supplier_id, 'Alias Proveedor', class:'control-label col-xs-2 ' %>
+          <div class="col-xs-5">
+            <%= f.select(:id_supplier, options_for_select(Supplier.all.collect { |supplier| [supplier.alias, supplier.alias] }, :selected => @invoice.id_supplier), {:include_blank => "- Seleccione Alias -"}, {:id => "invoice_alias", :required => true, class:'form-control input-sm'}) %>
+          </div>
+      </div>        
+
+      <div class="form-group">
+        <%= f.label 'Centro de Costo', class:'control-label col-xs-2 ' %>
+          <div class="col-xs-5">
+            <%= f.select(:id_ccosto, options_for_select(Project.all.collect { |project| [project.ccosto, project.ccosto] }, :selected => @invoice.id_ccosto ), {:include_blank => "- Seleccione Centro Costo -"}, {:id => "invoice_ccosto", :required => true, class:'form-control input-sm'}) %>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :id_item, 'Partida', class:'control-label col-xs-2 ' %>
+          <div class="col-xs-5">
+            <%= f.select(:id_item, options_for_select(Item.all.collect { |item| [item.nombre, item.id] }, :selected => @invoice.id_item), {:include_blank => "- Seleccione Partida -"}, {:id => "invoice_partida", :required => true, class:'form-control input-sm'}) %>
+          </div>
+      </div>
+
+      <div class="form-group">
+            <%= f.label :"estado_pago", class:'control-label col-xs-2 ' %>
+              <div class="col-xs-5">
+                <%= f.select :estado_pago, [['Pendiente Pago'], ['Pagado']], {:include_blank => "- Seleccione EstadoPago -"}, {:id => "invoice_estadopago", :required => true, class:'form-control input-sm'} %>
+              </div>
+      </div>
+
+      <div class="form-group">
+            <%= f.label :"estado_documento", class:'control-label col-xs-2 ' %>
+              <div class="col-xs-5">
+                <%= f.select :estado_documento, [['Aprobado'], ['Rechazado'], ['c/Observaciones']], {:include_blank => "- Seleccione Estado Doc. -"} , {:id => "invoice_estadodoc", :required => true, class:'form-control input-sm'} %>
+              </div>
+      </div>      
+
+      <div class="form-group">
+        <%= f.label :descripcion, 'Descripción', class:'control-label col-xs-2 ' %>
+          <div class="col-xs-5">
+            <%= f.text_field :descripcion, class:'form-control', placeholder:'Descripción', :required => true %>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :valor_neto, 'Valor Neto $', class:'control-label col-xs-2 ' %>
+          <div class="col-xs-5">
+            <%= f.number_field :valor_neto, class:'form-control', placeholder:'Valor Neto', :required => true %>
+          </div>
+      </div>   
+ 
+      <div class="form-group">
+        <%= f.label :valor_iva, 'IVA $', class:'control-label col-xs-2 ' %>
+          <div class="col-xs-5">
+            <%= f.text_field :valor_iva, class:'form-control', placeholder:'IVA', :required => true %>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :valor_total, 'Valor Total $', class:'control-label col-xs-2 ' %>
+          <div class="col-xs-5">
+            <%= f.number_field :valor_total, class:'form-control', placeholder:'Valor Total', :readonly => false %>
+          </div>
+      </div>        
+      
+      <div class="form-actions">
+        <%= f.submit 'Guardar', {:class=>"btn btn-primary btn-sm"}  %>
+        <%= link_to 'Cancelar', :back, {:class=>"btn btn-primary btn-sm"}  %>
+      </div>
+      <%= f.hidden_field :created_by, :value => @user_email %>
+      <%= f.hidden_field :updated_by, :value => @user_email %>
+  <% end %>
+</div>
+</div>
+</div>

@@ -1,0 +1,216 @@
+<div class="col-xs-12">
+<%= form_for(@order) do |f| %>
+    <% if @order.errors.any? %>
+      <div id="error_explanation">
+         <h4>No es posible guardar OC con Monto = 0</h4>
+         <ul>
+           <% @order.errors.full_messages do |msg| %>
+           <% #Should have been: @location.errors.full_messages.each do |msg| %>
+           <li>
+             <%= msg %>
+           </li>
+           <% end %>
+         </ul>
+      </div>
+    <% end %>
+
+  <div id="purchase-wrap">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3 class="page-header"><%= @order.doc_name %> Nº<span id="purchase_number"><%= @order.id %></span><small class="pull-right"><span class="status_oc">Estado OC : <%= @order.estado %></span></small></h3>
+      </div><!-- /.col -->
+      <div class="col-xs-4">
+        <small>
+          <label>REME INGENIERIA Y CONSTRUCCION SPA</label><br />
+          <label>76.532.798-9</label><br />
+          <label>Calle Limache 3405 Edif. Reitz Of.56</label><br />
+          <label>Teléfono</label><br />
+          <label>Viña del Mar</label>
+        </small>
+      </div><!-- /.col -->
+    </div>
+<hr>
+
+    <div class="row purchase-info">
+      <div class="col-xs-6 ">
+        <!--<address></address> -->
+        <form class="form-horizontal">
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label "Alias", class:"control-label" %></div>
+            <div class="col-xs-8"><%= f.select :supplier_id, options_from_collection_for_select(Supplier.order(:alias).all, "id", "alias", f.object.supplier_id), { prompt: "" }, { :id => "5", class: "form-control input-sm"} %></div>
+          </div>
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label "Razon Social", required: false %></div>
+            <div class="col-xs-8"><%= f.text_field :supplier_razonsocial, class: "form-control input-sm", id: "66", :placeholder =>'Razón Social' %>
+            </div>
+          </div>          
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label "RUT", required: false %></div>
+            <div class="col-xs-8"><%= f.text_field :supplier_rut, class: "form-control input-sm", id: "6", :placeholder =>'RUT XXXXXXXX-X' %>
+            </div>
+          </div>            
+          
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label "Dirección", required: false %></div>
+            <div class="col-xs-8"><%= f.text_field :supplier_dir, class: "form-control input-sm", id: "7", :placeholder =>'Direccion' %>
+            </div>
+          </div>         
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label "Fono", required: false %></div>
+            <div class="col-xs-8"><%= f.text_field :supplier_fono, class: "form-control input-sm", id: "8", :placeholder =>'Fono' %>
+            </div>
+          </div>              
+          
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label "Comuna", required: false %></div>
+            <div class="col-xs-8"><%= f.text_field :comuna, class: "form-control input-sm", id: "4", :placeholder =>'Comuna' %></div>
+          </div>           
+          
+      </div><!-- /.col -->
+      <div class="col-xs-6 ">
+        
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label :date, "Fecha", required: false %></div>
+            <div class="col-xs-8"><%= f.text_field :Fecha_Creacion, :value => @order.Fecha_Creacion.strftime("%d/%m/%Y"), class: "form-control input-sm datepicker", id: "purchase_date" %></div>
+          </div>
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label "Solicitado Por", class:"control-label" %></div>
+            <div class="col-xs-8"><%= f.select :PSolicita, options_from_collection_for_select(User.all, "email", "email", f.object.PSolicita), { prompt: "" }, { :id => "purchase_solicitante", class: "form-control input-sm"} %></div>
+          </div>
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label "Proyecto", class:"control-label" %></div>
+            <div class="col-xs-8"><%= f.select :project_id, options_from_collection_for_select(Project.where(estado: "ABIERTO").all, "id", "name", f.object.project_id), { prompt: "" }, { id: "purchase_Proyecto_edit", class: "form-control input-sm"} %></div>
+          </div>
+          
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label "Partida", required: false %></div>
+            <div class="col-xs-8 "><%= f.grouped_collection_select(:item_id, Project.order(:name), :items, :name, :id, :nombre, {include_blank: "-Seleccione Partida-" }, {class:'form-control input-sm', id: "purchase_partida_edit"}) %></div>
+          </div>     
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label :currency, "Moneda", required: false %></div>
+            <div class="col-xs-8 "><%= f.text_field :currency, value: "", id:"purchase_currency", class: "form-control input-sm" %></div>
+          </div>
+
+          <div class="col-xs-12"></div>
+          <div class="form-group">
+            <div class="col-xs-4"><%= f.label :impuesto1, "Impuesto %", required: false %></div>
+            <div class="col-xs-8 "><%= f.number_field :impuesto1, :value => "19", id:"purchase_impuesto1", class: "form-control input-sm", placeholder: "% Impuesto", :required => true  %></div>
+          </div>          
+
+        </form>
+      </div></small><!-- /.col -->
+    </div><!-- /.row -->
+
+    <div class="row">
+      <div class="col-xs-12 table-responsive">
+        <hr>
+        <table class="table table-hover" id="items">
+          <thead>
+              <th class="item-name">Item</th>
+              <th class="description">Descripción</th>
+              <th class="quantity">Cantidad</th>
+              <th class="unit">Valor Unitario</th>
+              <th class="unit">Descuento</th>
+              <th class="units">Total Neto</th>
+              <th class="no_print">Acciones</th>
+          </thead>
+          <tbody>
+          <%= f.fields_for :products, wrapper: false do |ff| %>
+          <%= render 'product_fields', f: ff %>
+          </tbody>
+         <% end %> 
+        </table>
+          <div class='links'>
+            <%= link_to_add_association "Agregar Item", f, :products, :class => 'btn btn-success btn-sm', 'data-association-insertion-node' => "#items", 'data-association-insertion-method' => "append", partial: "product_fields", id:"agrega_fila" %>
+          </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-6">
+        <div class="table-responsive">
+          <table class="table table-hover" id="totals">
+            <tr>
+              <th style="width:50%">Subtotal:</th>
+              <td>
+                <span class="subtotal_currency"></span><%= f.number_field :subtotal1, class: "form-control subtotal", readonly: true, id: "subtotal" %></td>
+            </tr>
+            <tr>
+              <th>Impuesto:</th>
+              <td><span class="subtotal_currency"></span><%= number_with_precision((f.text_field :monto_impuesto, class: "form-control", readonly: true, id: "9"), precision: 1, separator: ',', delimiter: '.') %></td>
+            </tr>
+            <tr>
+              <th>Total:</th>
+              <td class="balance"><span class="subtotal_currency"></span><%= f.text_field :amount, class: "form-control due", readonly: true, id: "purchase_total" %></td>
+              <%= f.hidden_field :amount, id: "purchase_total1" %>
+              <%= f.hidden_field :subtotal1, id: "subtotal1" %>
+              <input id="100" type="hidden" />
+              <input id="101" type="hidden" />
+              <input id="102" type="hidden" />
+              <input id="103" type="hidden" />
+              <%= f.hidden_field :Centro_Costo, id: "110" %>
+              <%= f.hidden_field :estado, :value => 'PENDIENTE' %>
+              <%= f.hidden_field :updated_by, :value => @user_email %>
+            </tr>
+          </table>
+        </div>
+      </div><!-- /.col -->    
+    </div><!-- /.row -->
+
+    <div class="row">
+      <div class="col-xs-12 pull-left">
+        <a class="btn btn-info btn-sm" id="purchase_button_edit" data-toggle="modal" data-target="#purchase_modal">Mostrar OC</a>
+        
+
+        <% if @project == "ABIERTO" %>
+          <%= f.submit 'Guardar OC', class: 'btn btn-warning btn-sm', id: "submit_purchase" %>
+        
+
+        <% if order.estado == 'PENDIENTE' %>
+        <%= link_to "Aprobar OC", {:controller => "orders", :action => "aprobar", :id => @order.id, method: "post"}, class: 'btn btn-success btn-sm', :data => {:confirm => "Está seguro que desea aprobar Solicitud?"} %>
+        <% else %>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+<!--<div id="divResults"></div>
+<div id="divErrorMessages"></div>
+-->
+    <div id="terms">
+      <h5>OBSERVACIONES</h5>
+      <%= f.text_area :despacho, id: "10", :maxlength => 135 %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<div class="modal fade" id="purchase_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" style="width:920px">
+      <div class="container-fluid purchase_wrapper" style="margin:10px" id="print-me">
+        <%= render 'purchase_edit' %>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary btn-sm" onclick="printDiv('print-me')">Imprimir</button>
+      </div>
+    </div>
+  </div>
+</div>

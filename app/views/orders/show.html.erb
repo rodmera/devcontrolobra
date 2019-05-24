@@ -1,0 +1,93 @@
+
+<div class="container">
+<BR></BR>
+ <h4>Materiales de Solicitud ID #<%= @order.id%></h4>
+<table class="table table-stripped table-hover table-condensed table-bordered">
+  <thead>
+    <tr>
+      <th>Centro de Costo</th>
+      <th>Partida</th>
+      <th>Unidad</th>
+      <th>ID_SOC</th>
+      <th>Nombre</th>
+      <th>Descrip</th>
+      <th>Cant</th>
+      <th>Valor Unitario</th>
+      <th>Total Neto</th>
+      <th>IVA</th>
+      <th>Valor Total</th>
+      <th colspan="2">Acción</th>
+    </tr>
+</thead>
+
+<tfoot>
+    <tr>
+      <td></td>
+      <td>TOTALES</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+        <%= number_to_currency(Product.where(id_order: @order.id).sum(:total_neto) , :locale => 'en_us', :precision => 0, :delimiter => "." ) 
+        %>
+      </td>
+      <td>
+        <%= number_to_currency(Product.where(id_order: @order.id).sum(:iva) , :locale => 'en_us', :precision => 0, :delimiter => "." ) 
+        %>
+      </td>
+      <td>
+        <%= number_to_currency(Product.where(id_order: @order.id).sum(:valor_total) , :locale => 'en_us', :precision => 0, :delimiter => "." ) 
+        %>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tfoot>
+
+<tbody>
+  <% @materiales.each do |material| %>
+    <tr>
+      <td><%= material.id_project%></td>
+      <td><%= material.id_item%></td>
+      <td><%= material.id_metric%></td>
+      <td><%= material.id_order%></td>
+      <td><%= material.nombre %></td>
+      <td><%= material.descripcion  %></td>
+      <td><%= material.cant  %></td>
+      <td><%= number_to_currency(material.valor_unitario, :locale => 'en_us', :precision => 0, :delimiter => ".") %></td>
+      <td><%= number_to_currency(material.total_neto, :locale => 'en_us', :precision => 0, :delimiter => ".", :separator => ",") %></td>
+      <td><%= number_to_currency(material.iva, :locale => 'en_us', :precision => 0, :delimiter => "." ) %></td>
+      <td><%= number_to_currency(material.valor_total, :locale => 'en_us', :precision => 0, :delimiter => "." ) %></td>      
+      <td>
+      <%= button_to edit_product_path(material.id), {remote: true, method: :get, class: "btn btn-info btn-xs"} do %>
+      <span class="glyphicon glyphicon-pencil" aria-hidden="true"> </span> Editar
+      <% end %>
+      </td>
+      <td>
+        <%= button_to product_path(material.id), { method: :delete, data: { confirm: '¿Está seguro?' }, class: "btn btn-info btn-xs" } do %>
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"> </span> Borrar
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+<p>
+<input type="button" class="btn btn-primary btn-sm" value="Agregar Material" onclick="$('#rmrform').show()" />
+<%= link_to 'Volver a Solicitud', root_path, :class => 'btn btn-primary btn-sm' %>
+
+</p>
+</div>
+<div id="product-form" style="display:none;"></div>
+
+<div id="rmrform" 
+<%= render partial: 'products/form' , locals: { product: @product , id_order: @order.id } %>
+</div>
+
+
+
+
+</div>

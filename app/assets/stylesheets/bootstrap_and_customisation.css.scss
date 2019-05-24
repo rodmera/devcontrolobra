@@ -1,0 +1,134 @@
+@import "bootstrap-sprockets";
+@import "variables";
+@import "bootstrap";
+@import "bootswatch";
+@import "datepicker";
+@import "purchases";
+@import "print";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+.input-xs {
+    height: 22px;
+    padding: 5px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+
+.navbar-fixed-top {
+    min-height: 61px;
+}
+
+.navbar-nav > li > a {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    line-height: 61px;
+}
+
+.navbar-brand {
+    padding: 0;
+}
+
+.navbar-brand>img {
+  height: 120%;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  width: auto;
+}
+
+.table {
+    font-size: 12px;
+}
+
+.form-group {
+    font-size: 12px;
+}
+
+.form-control {
+    font-size: 12px;
+    padding-right: 8px;
+}
+
+.form-horizontal .control-label {
+  text-align: left !important; /* !important added for priority in SO snippet. */
+  margin-left: 0px !important;
+
+}
+
+.container {
+    font-size: 12px;
+}
+
+body {
+  padding-top: 61px;
+}
+
+table tfoot
+{
+ background-color: #F5F5F5;
+ font-weight: bold;
+}
+
+#rmrform {
+  display:none;
+}
+
+#rmreditform {
+  display:none;
+}
+
+.APROBADA {
+  color: green;
+}
+
+.ABIERTO {
+  color: green !important;
+}
+
+.PENDIENTE {
+  color: red;
+}
+
+.BLOQUEADO {
+  color: red !important;
+}
+
+/*flash*/
+.alert-error {
+    background-color: #f2dede !important;
+    border-color: #eed3d7 !important;
+    color: #b94a48 !important;
+    text-align: left !important;
+ }
+
+.alert-alert {
+    background-color: #f2dede !important;
+    border-color: #eed3d7 !important;
+    color: #b94a48 !important;
+    text-align: left !important;
+ }
+
+.alert-success {
+    background-color: #dff0d8 !important;
+    border-color: #d6e9c6 !important;
+    color: #468847 !important;
+    text-align: left !important;
+ }
+
+.alert-notice {
+    background-color: #dff0d8 !important;
+    border-color: #d6e9c6 !important;
+    color: #468847 !important;
+    text-align: left !important;
+ }
+
+.status_oc {
+	font-weight:bold;
+}
+
+hr {
+  margin-top: 10px !important;
+  margin-bottom: 8px !important;
+}
+

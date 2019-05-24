@@ -1,0 +1,102 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h3 class="page-header">
+    <%= image_tag("reme.jpg", width: 250, alt: "logo")%>
+    <p align="left">
+      ORDEN DE COMPRA
+    </p>
+      <small class="pull-right">Fecha <span class="purchase_header_date"></span></small>
+    </h3>
+  </div><!-- /.col -->
+</div>
+                <!-- info row -->
+<div class="row purchase-info">
+  <div class="col-xs-4 purchase-col">
+    De
+    <address>
+      <div id= "modal_1" class="bold"></div>
+      <div id= "modal_2"></div>
+      <div id= "modal_3"></div>
+      <div id= "modal_4"></div>
+      <div id= "modal_11"></div>
+      <div id= "modal_666"></div>
+
+    </address>
+  </div><!-- /.col -->
+
+  <div class="col-xs-4 purchase-col">
+    Para
+    <address>
+      <div id= "modal_5"></div>
+      <div id= "modal_6"></div>
+      <div id= "modal_7"></div>
+      <div id= "modal_8"></div>
+      <div id= "modal_777"></div>
+      <div id= "modal_888"></div>
+    </address>
+  </div><!-- /.col -->
+
+  <div class="col-xs-4 purchase-col">
+    <form class="form-horizontal">
+      <div class="form-group">
+        <div class="col-xs-5"><label>OC #</label></div>
+        <div class="col-xs-7"><p id="modal_purchase_number" class="pull-right"></p></div>
+      </div>
+                    
+      <div class="col-xs-12"></div>
+      <div class="form-group">
+        <div class="col-xs-4"><label>Fecha</label></div>
+        <div class="col-xs-8"><span class="purchase_header_date pull-right"></span></div>
+      </div>
+                    
+      <div class="col-xs-12"></div>
+      <div class="form-group">
+        <div class="col-xs-5 purchase_space"><label>Monto</label></div>
+        <div class="col-xs-7 purchase_space bold" style="text-align:right"><span class="due">0.00</span><span class="subtotal_currency"></span></div>
+      </div>
+    </form>
+  </div><!-- /.col -->
+</div><!-- /.row -->
+
+<div class="row">
+	<div class="col-xs-12">
+    <hr>
+		<table class="table table-bordered" id="modal_items">
+		  <thead>
+		    <th class="item-name">Item</th>
+		    <th class="description">Descripcion</th>
+		    <th class="unit">Valor Unitario</th>
+	      <th class="quantity">Cantidad</th>
+	      <th class="units">Total Neto</th>
+		  </thead>
+		  <tbody id="modal_tbody">
+		  </tbody>
+		</table>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-6 col-xs-offset-6">
+    <div class="">
+      <table class="table" id="modal_totals">
+        <tr>
+          <th style="width:50%">Subtotal:</th>
+          <td><span id="modal_subtotal"></span><span class="subtotal_currency"></span></td>
+        </tr>
+        <tr>
+          <th>IVA:</th>
+          <td><span id="modal_9"></span><span class="subtotal_currency"></span></td>
+        </tr>
+        <tr>
+          <th>Total:</th>
+          <td class="balance"><span class="due">0.00</span><span class="subtotal_currency"></span></td>
+        </tr>
+      </table>
+    </div>
+  </div><!-- /.col -->
+</div>
+
+<div id="modal_terms">
+	<h5>OBSERVACIONES</h5>
+	<span id="modal_10"></span>
+</div>

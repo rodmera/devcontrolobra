@@ -1,0 +1,66 @@
+<div class="container">
+<h4>Proveedores</h4>
+<table class="table table-stripped table-hover table-condensed table-bordered">
+  <thead>
+    <tr>
+      <!-- <th>Name</th> -->
+      <th>Alias</th>
+      <th>Razon social</th>
+      <th>Rut</th>
+      <th>Giro</th>
+      <th>Fecha Creación</th>
+      <th>Direccion </th>
+      <!-- <th>Direccion l2</th> -->
+      <!--<th>Cod postal</th> -->
+      <th>Comuna</th>
+      <th>Region</th>
+      <!-- <th>Pais</th> -->
+      <th>Fono</th>
+      <th>Sitio web</th>
+      <th>Obs.</th>
+      <th>Estado</th>
+      <!-- <th>Credito</th> -->
+      <!-- <th>Plazo pago</th> -->
+      <th colspan="3"> Acción</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @suppliers.each do |supplier| %>
+      <tr>
+        <!-- <td><%= supplier.name %></td> -->
+        <td><%= supplier.alias %></td>
+        <td><%= supplier.razon_social %></td>
+        <td><%= supplier.rut %></td>
+        <td><%= supplier.giro %></td>
+        <td><%= supplier.created_at.strftime("%d/%m/%Y") %></td>
+        <td><%= supplier.direccion_l1 %></td>
+        <td><%= supplier.comuna %></td>
+        <td><%= supplier.region %></td>
+        <td><%= supplier.telefono %></td>
+        <td><a href="http://<%= supplier.sitio_web %>"><%= supplier.sitio_web %></a></td>
+        <td><%= supplier.observaciones %></td>
+        <td><%= supplier.estado %></td>
+        <!-- <td><%= supplier.direccion_l2 %></td> -->
+        <!-- <td><%= supplier.cod_postal %></td> -->
+        <!-- <td><%= supplier.pais %></td> -->
+        <!-- <td><%= supplier.credito %></td> -->
+        <!-- <td><%= supplier.plazo_pago %></td> -->
+        <td><%= link_to 'Ver', supplier, class: "btn btn-info btn-xs" %></td>
+        <td><%= link_to 'Editar', edit_supplier_path(supplier), class: "btn btn-info btn-xs" %></td>
+        <td><%= link_to 'Borrar', supplier, method: :delete, data: { confirm: 'Está Seguro?' }, class: "btn btn-info btn-xs" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+<%= link_to 'Nuevo Proveedor', new_supplier_path, :class => 'btn btn-primary btn-sm'  %>
+<br>
+<p>
+<%= link_to "Exportar a CSV", suppliers_path(format: "csv"), :class => 'btn btn-info btn-xs' %>
+<%= link_to 'Exportar a Excel', suppliers_path(format: :xlsx), :class => 'btn btn-info btn-xs' %>
+</p>
+</br>
+</p>
+</div>

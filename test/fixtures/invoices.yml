@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_invoice: MyString
+  id_product: MyString
+  id_purchase: MyString
+  id_order: MyString
+  id_project: MyString
+  id_item: MyString
+  id_metric: MyString
+  id_supplier: MyString
+  id_ccosto: MyString
+  fecha_recepcion: 2017-06-14
+  fecha_ingreso: 2017-06-14 15:42:16
+  estado: MyString
+  descripcion: MyString
+  valor_neto: 9.99
+  valor_iva: 9.99
+  valor_total: 9.99
+
+two:
+  id_invoice: MyString
+  id_product: MyString
+  id_purchase: MyString
+  id_order: MyString
+  id_project: MyString
+  id_item: MyString
+  id_metric: MyString
+  id_supplier: MyString
+  id_ccosto: MyString
+  fecha_recepcion: 2017-06-14
+  fecha_ingreso: 2017-06-14 15:42:16
+  estado: MyString
+  descripcion: MyString
+  valor_neto: 9.99
+  valor_iva: 9.99
+  valor_total: 9.99

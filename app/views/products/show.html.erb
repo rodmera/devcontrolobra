@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id product:</strong>
+  <%= @product.id_product %>
+</p>
+
+<p>
+  <strong>Id purchase:</strong>
+  <%= @product.id_purchase %>
+</p>
+
+<p>
+  <strong>Id order:</strong>
+  <%= @product.id_order %>
+</p>
+
+<p>
+  <strong>Id project:</strong>
+  <%= @product.id_project %>
+</p>
+
+<p>
+  <strong>Id item:</strong>
+  <%= @product.id_item %>
+</p>
+
+<p>
+  <strong>Id metric:</strong>
+  <%= @product.id_metric %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @product.nombre %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @product.descripcion %>
+</p>
+
+<p>
+  <strong>Valor unitario:</strong>
+  <%= @product.valor_unitario %>
+</p>
+
+<p>
+  <strong>Valor total:</strong>
+  <%= @product.valor_total %>
+</p>
+
+<p>
+  <strong>Cant:</strong>
+  <%= @product.cant %>
+</p>
+
+<%= link_to 'Editar', edit_product_path(@product) %> |
+<%= link_to 'Volver', products_path %>

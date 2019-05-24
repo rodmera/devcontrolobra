@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  NumOC: 
+  Proveedor: MyText
+  FechaEmision: 2017-03-07 00:53:10
+  ValorNeto: 9.99
+
+two:
+  NumOC: 
+  Proveedor: MyText
+  FechaEmision: 2017-03-07 00:53:10
+  ValorNeto: 9.99

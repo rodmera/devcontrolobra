@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<div class="container">
+<h4>Ordenes de Compras</h4>
+<table class="table table-stripped table-hover table-condensed table-bordered">
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>Razón social</th>
+    <th>Fecha Emisión</th>
+    <th>RUT</th>
+    <th>Direccion</th>
+    <th>Comuna</th>
+    <th>Ciudad</th>
+    <th>eMail</th>
+    <th>Fono</th>
+    <th>Fecha Entrega</th>
+    <th>Condiciones de Pago</th>
+    <th colspan="2"> Acción</th>
+  </tr>
+</thead>
+<tbody>
+  <% @purchases.each do |purchase| %>
+    <tr>
+      <td><%= purchase.id %></td>
+      <td><%= purchase.razon_social %></td>
+      <td><%= purchase.fecha %></td>
+      <td><%= purchase.rut %></td>
+      <td><%= purchase.direccion %></td>
+      <td><%= purchase.comuna %></td>
+      <td><%= purchase.ciudad %></td>
+      <td><%= purchase.email %></td>
+      <td><%= purchase.fono %></td>
+      <td><%= purchase.fecha_entrega %></td>
+      <td><%= purchase.cond_pago %></td>
+      <td><%= link_to 'Editar', edit_purchase_path(purchase) %></td>
+      <td><%= link_to 'Borrar', purchase, method: :delete, data: { confirm: 'Está Seguro?' } %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+<p>
+  <%= link_to 'Crear OC', new_purchase_path, :class => 'btn btn-primary btn-sm' %>
+  <%= link_to 'Ver Listado OC', { controller: "purchases" }, :class => 'btn btn-primary btn-sm' %>
+</p>
+</div>
+<!-- Codigo Importado, se debe revisar -->
+</div>

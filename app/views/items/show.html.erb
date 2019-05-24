@@ -1,0 +1,14 @@
+<ul>
+  <li><%= @item.descripcion %></li>
+  <li><%= @item.metric    %></li>
+</ul>
+<nav>
+  <ul>
+    <li><%= link_to 'Editar', edit_item_path %></li>
+    <li>
+      <%= link_to 'Borrar', @item, method: :delete,
+          data: { confirm: 'Está Seguro?' } %>
+    </li>
+    <li><%= link_to 'Home', root_path %></li>
+  </ul>
+</nav>

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id_product: MyString
+  id_purchase: MyString
+  id_order: MyString
+  id_project: MyString
+  id_item: MyString
+  id_metric: MyString
+  nombre: MyString
+  descripcion: MyString
+  valor_unitario: 9.99
+  valor_total: 9.99
+  cant: 
+
+two:
+  id_product: MyString
+  id_purchase: MyString
+  id_order: MyString
+  id_project: MyString
+  id_item: MyString
+  id_metric: MyString
+  nombre: MyString
+  descripcion: MyString
+  valor_unitario: 9.99
+  valor_total: 9.99
+  cant: 

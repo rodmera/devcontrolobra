@@ -1,0 +1,17 @@
+<h2>REME - Nueva Solicitud de Compra Ingresada</h2>
+
+<p>
+El usuario <%= @order.created_by %> ha creado una nueva Solicitud Nº <%= @order.id %>, con fecha <%= @order.created_at.strftime("%d/%m/%Y") %>. Informacion general de la Solicitud a continuación: <br />
+<br />
+<strong>Centro de Costo:</strong> <%= @order.Centro_Costo %> <br />
+<strong>Proveedor :</strong> <%= @order.supplier_razonsocial %> <br />
+<strong>Monto Neto:</strong> <%= @order.subtotal1%> <br />
+<strong>Observaciones:</strong> <%= @order.despacho %> <br />
+<strong>Estado Actual:</strong> <%= @order.estado %> <br />
+<br />
+Puede ver los detalles de la Solicitud en el siguiente link: <strong><%= edit_order_url(@order, host: 'http://137.135.121.245:3131/') %></strong>
+<br />
+<br />
+<h6>- Email generado automáticamente por Lacerta CCS SPA -</h6>
+<br />
+</p>

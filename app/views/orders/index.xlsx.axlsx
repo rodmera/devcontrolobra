@@ -1,0 +1,7 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Solicitudes") do |sheet|
+    sheet.add_row ["ID SOC", "Proyecto", "Partida", "Alias Proveedor", "Solicitante", "Descripcion","Estado", "Fecha Creacion"]
+    @orders.each do |order|
+    sheet.add_row [order.id, order.project_id, order.item_id, order.supplier_alias, order.PSolicita, order.descripcion, order.Estado, order.Fecha_Creacion]
+  end
+end

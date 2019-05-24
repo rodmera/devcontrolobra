@@ -1,0 +1,7 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Gastos") do |sheet|
+    sheet.add_row ["Tipo Doc", "Num Doc", "Proveedor", "Centro Costo", "Fecha", "Estado Pago", "ValorNeto", "IVA", "ValorTotal", "ID_OC", "Solicitante_OC", "Estado_OC", "CCosto_OC", "Neto_OC", "Total_OC", "Observaciones"]
+    @invoices_and_orders.each do |invoice|
+    sheet.add_row [invoice.tipo_doc, invoice.id_invoice, invoice.id_supplier, invoice.id_ccosto, invoice.fecha_recepcion, invoice.estado_pago, invoice.valor_neto, invoice.valor_iva, invoice.valor_total, invoice.order_id, invoice.Solicitante, invoice.estado, invoice.CCosto, invoice.valorneto, invoice.valortotal, invoice.observaciones]
+  end
+end

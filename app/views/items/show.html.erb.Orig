@@ -1,0 +1,10 @@
+<h1></h1>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <%= @item.metric %>
+  </div>
+  <div class="panel-body">
+    <%= @item.descripcion %>
+  </div>
+</div>
+<%= link_to 'Back', items_path %>

@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  idoc: MyString
+  ccosto: MyString
+  razon_social: MyString
+  rut: MyString
+  direccion: MyString
+  comuna: MyString
+  ciudad: MyString
+  fecha: 2017-05-15
+  atencion: MyString
+  email: MyString
+  fono: MyString
+  cond_pago: MyString
+  fecha_entrega: 2017-05-15
+  despacho: MyString
+  contacto_obra: MyString
+  facturar_a: MyString
+  rut_b: MyString
+  direccion_b: MyString
+  comuna_b: MyString
+  ciudad_b: MyString
+  fono_b: MyString
+  descuento: MyString
+
+two:
+  idoc: MyString
+  ccosto: MyString
+  razon_social: MyString
+  rut: MyString
+  direccion: MyString
+  comuna: MyString
+  ciudad: MyString
+  fecha: 2017-05-15
+  atencion: MyString
+  email: MyString
+  fono: MyString
+  cond_pago: MyString
+  fecha_entrega: 2017-05-15
+  despacho: MyString
+  contacto_obra: MyString
+  facturar_a: MyString
+  rut_b: MyString
+  direccion_b: MyString
+  comuna_b: MyString
+  ciudad_b: MyString
+  fono_b: MyString
+  descuento: MyString

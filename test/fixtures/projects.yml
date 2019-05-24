@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  descripcion: MyString
+  fecha_inicio: 2017-05-30
+  fecha_termino: 2017-05-30
+  plazoej: MyString
+  ccosto: MyString
+  comuna: MyString
+  ciudad: MyString
+  region: MyString
+  tcostodirecto: 9.99
+  gastosgenerales: 9.99
+  utilidades: 9.99
+  tneto: 9.99
+  impuesto_iva: 9.99
+  toferta: 9.99
+
+two:
+  name: MyString
+  descripcion: MyString
+  fecha_inicio: 2017-05-30
+  fecha_termino: 2017-05-30
+  plazoej: MyString
+  ccosto: MyString
+  comuna: MyString
+  ciudad: MyString
+  region: MyString
+  tcostodirecto: 9.99
+  gastosgenerales: 9.99
+  utilidades: 9.99
+  tneto: 9.99
+  impuesto_iva: 9.99
+  toferta: 9.99

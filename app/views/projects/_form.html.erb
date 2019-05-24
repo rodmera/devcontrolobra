@@ -30,7 +30,7 @@
           <div class="form-group">
             <%= f.label :comuna, 'Comuna', class:'control-label col-xs-2 ' %>
               <div class="col-xs-5">
-                <%= f.select(:comuna, options_for_select(Comuna.order('str_descripcion ASC').all.collect { |comuna| [comuna.str_descripcion, comuna.str_descripcion] }, :selected => @project.comuna), {:include_blank => "- Seleccione Comuna -"}, {:id => "project_comuna", :required => true, class:'form-control input-sm'}) %>
+                <%= f.select(:comuna, options_for_select(Comuna.order('name ASC').all.collect { |comuna| [comuna.name, comuna.name] }, :selected => @project.comuna), {:include_blank => "- Seleccione Comuna -"}, {:id => "project_comuna", :required => true, class:'form-control input-sm'}) %>
               </div>
           </div>                    
 
@@ -51,7 +51,7 @@
           <div class="form-group">
             <%= f.label :region, 'Region', class:'control-label col-xs-2 ' %>
               <div class="col-xs-5">
-                <%= f.select(:region, options_for_select(Region.all.collect { |region| [region.str_descripcion, region.str_descripcion] }, :selected => @project.region), {:include_blank => "- Seleccione Región -"}, {:id => "project_region", :required => true, class:'form-control input-sm'}) %>
+                <%= f.select(:region, options_for_select(Region.all.collect { |region| [region.name, region.name] }, :selected => @project.region), {:include_blank => "- Seleccione Región -"}, {:id => "project_region", :required => true, class:'form-control input-sm'}) %>
               </div>
           </div>
 

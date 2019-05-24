@@ -12,9 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170923181324) do
 
-  create_table "comunas", primary_key: "id_co", force: :cascade do |t|
-    t.integer "id_pr",                      null: false, comment: "ID de la provincia asociada"
-    t.string  "str_descripcion", limit: 30,              comment: "Nombre descriptivo de la comuna"
+  create_table "comunas", primary_key: "id", force: :cascade do |t|
+    t.integer "id_region",                      null: false, comment: "ID de la region asociada"
+    t.string  "name", limit: 30,              comment: "Nombre descriptivo de la comuna"
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -178,11 +178,10 @@ ActiveRecord::Schema.define(version: 20170923181324) do
     t.datetime "updated_at"
   end
 
-  create_table "regions", primary_key: "id_re", id: :integer, comment: "ID unico", force: :cascade do |t|
-    t.string  "str_descripcion", limit: 60, null: false, comment: "Nombre extenso"
-    t.string  "str_romano",      limit: 5,  null: false, comment: "Número de región"
-    t.integer "num_provincias",             null: false, comment: "total provincias"
-    t.integer "num_comunas",                null: false, comment: "Total de comunas"
+  create_table "regions", primary_key: "id", id: :integer, comment: "ID unico", force: :cascade do |t|
+    t.string  "name", limit: 60, null: false, comment: "Nombre extenso"
+    t.string  "ordinal_symbol",      limit: 5,  null: false, comment: "Numero Romano"
+    t.integer "order_by",                null: false, comment: "orden"
   end
 
   create_table "suppliers", force: :cascade do |t|
